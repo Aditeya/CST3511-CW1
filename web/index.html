@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Social Media Aggregator</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <style>
+            body {
+                background-color: black;
+                color: white;
+            }
+
+            .center {
+                text-align: center;
+                margin: auto;
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+
+            .form {
+                text-align: left;
+                border: 5px solid green;
+                padding: 20px;
+                margin: 20px;
+            }
+
+            .form-text {
+            }
+        </style>
+
+        <script>
+            function getSupportedWebsites() {
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function () {
+                    if (this.readyState === 4 && this.status === 200) {
+                        document.getElementById("supp-web").innerHTML = this.responseText;
+                    }
+                };
+                xhttp.open("GET", "SupportedWebsites", true);
+                xhttp.send();
+            }
+        </script>
+    </head>
+    <body>
+        <div class="center">
+            <h1>LOGIN</h1>
+            <form class="form" method="post" autocomplete="on" action="redditLogin">
+                <label for="email">Email</label><br>
+                <input type="email" placeholder="Enter Email ID" name="email" id="email" required><br>
+
+                <label for="pass">Password</label><br>
+                <input type="password" placeholder="Enter Password" name="pass" id="pass" required><br>
+
+                <input type="submit" value="Submit">
+            </form>
+            <div id="supp-web">
+                <button type="button" onclick="getSupportedWebsites()">Supported Websites</button>
+            </div>
+        </div>
+    </body>
+</html>
